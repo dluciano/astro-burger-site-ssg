@@ -1,0 +1,22 @@
+---
+import PeopleEatingImage from "../../public/images/people_eating.png"
+---
+<section>
+  <p
+    class="uppercase text-stroke-black text-stroke text-accent4 text-[108px] leading-[88.9%] tracking-[-2%] mb-[95px]"
+  >
+    "the best burger i've ever had"
+  </p>
+  <div
+    class="w-full h-[503px] people-eating rounded-3xl bg-accent4 border-4 border-accent2 mb-[136px]"
+  >
+  </div>
+</section>
+<style define:vars={{ peopleEatingUrl: `url(${PeopleEatingImage.src})` }}>
+  .people-eating {
+    background-image: var(--peopleEatingUrl);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+</style>

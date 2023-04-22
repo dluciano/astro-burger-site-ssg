@@ -1,0 +1,26 @@
+---
+import CalloutItem from "./CalloutItem.astro";
+const xTrans = 500;
+---
+
+<section class="mt-[64px] clear-both h-[753px] mb-[95px]">
+  <div class="float-left w-1/2">
+    <a href="">
+      <CalloutItem
+        img={"/images/callout_left.png"}
+        text={"salt & Vinegar french fries"}
+        xTrans={`-${xTrans}px`}
+      />
+    </a>
+  </div>
+
+  <div class="float-right">
+    <a href="">
+      <CalloutItem
+        img={"/images/callout_right.png"}
+        text={"crispy chicken sandwich"}
+        xTrans={`${xTrans}px`}
+      />
+    </a>
+  </div>
+</section>

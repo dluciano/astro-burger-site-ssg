@@ -1,0 +1,67 @@
+---
+export type Props = {
+  img: string;
+  text: string;
+  xTrans: string;
+};
+
+const { img, text, xTrans } = Astro.props;
+---
+
+<div
+  class="relative callout-item w-[575px] h-[753px] max-w-[575px] max-h-[753px] float-left rounded-3xl border-accent2 bg-accent3 border-[4px]"
+>
+  <div
+    class="flex flex-col justify-center w-[386px] h-[185px] absolute bottom-[23px] left-[23px] bg-accent1 border-black rounded-3xl"
+  >
+    <p
+      class="text-stroke-black text-stroke uppercase ml-[47px] text-accent2 text-[30px] leading-[96%]"
+    >
+      {text}
+    </p>
+    <p
+      class="text-stroke-black text-stroke uppercase ml-[47px] text-accent3 text-[20px]"
+    >
+      Order Online
+    </p>
+  </div>
+</div>
+<style define:vars={{ calloutImg: `url(${img})`, xTrans }}>
+  .callout-item {
+    background-image: var(--calloutImg);
+    background-size: cover;
+    transform: translateX(var(xTrans));
+  }
+  .callout-item:hover {
+    box-shadow: 0 0 3px 3px rgba(10, 203, 193, 0.855);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .callout-item-slidein-animation {
+      filter: opacity(0);
+      transform: translateX(var(--xTrans));
+      animation-duration: 1s;
+      animation-name: callout-item-slidein-keyframe;
+      animation-fill-mode: forwards;
+    }
+    @keyframes callout-item-slidein-keyframe {
+      from {
+        filter: opacity(0);
+        transform: translateX(var(--xTrans));
+      }
+      to {
+        filter: opacity(1);
+        transform: translateX(0);
+      }
+    }
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add("callout-item-slidein-animation");
+    }
+  });
+  const elements = document.querySelectorAll(".callout-item");
+  if (elements) for (const element of elements) observer.observe(element);
+</script>
